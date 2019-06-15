@@ -1,0 +1,18 @@
+install.packages("e1071")
+install.packages("naivebayes")
+library(e1071)
+library(naivebayes)
+
+data(iris)
+A = data.frame(iris)
+nb = naive_bayes(Species ~ ., data = A)
+plot(nb, ask = TRUE)
+
+A = read.csv("/Users/bajajvbh/Downloads/comp.csv")
+B = read.csv(file.choose())
+NB = naiveBayes(buy~.,data=A)
+model1 = naive_bayes(buy ~ .,data = A)
+pred_class = predict(NB,newdata=B,type="class")
+Y = data.frame(age = c("Youth","Middle_Aged","Senior"),income = c("medium","high","low"), student = c("yes","no","no"),credit.rating = c("excellent","fair","fair"))
+pred_class = predict(model1,newdata=Y,type="class")
+pred_raw = predict(NB,newdata=B,type="raw")
